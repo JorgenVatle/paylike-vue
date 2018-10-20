@@ -9,13 +9,14 @@ let Vue: Vue;
 let Options: options;
 
 const PaylikeVue = {
+
     /**
      * Vue plugin installer.
      *
      * @param vue
      * @param options
      */
-    install(vue: VueInstance, options: options) {
+    install(vue: Vue, options: options) {
         Vue = vue;
         Options = options;
 
