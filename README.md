@@ -55,33 +55,32 @@ Vue.use(PaylikeVue);
 ### Popup
 
 #### [Create transaction](https://github.com/paylike/sdk#popup-for-a-transaction)
-```vue
-<script>
-    export default {
-        // ...
-        methods: {
-            popup() {
-                this.$paylike.popup({
-                    title: 'Some Product',
-                    description: 'Some descriptive text',
+```js
+export default {
+    // ...
+    methods: {
+        popup() {
+            this.$paylike.popup({
+                title: 'Some Product',
+                description: 'Some descriptive text',
 
-                    amount: 1337,                           // use minor units. (1337 is the same as $13.37)
-                    currency: 'USD',
-                    
-                    custom: {                               // optional
-                        someCustomProperty: 'custom-value'
-                    }
-                })
-            }
+                amount: 1337,                           // use minor units. (1337 is the same as $13.37)
+                currency: 'USD',
+                
+                custom: {                               // optional
+                    someCustomProperty: 'custom-value'
+                }
+            })
         }
-        // ...
     }
-</script>
+    // ...
+}
 ```
 
 #### [Tokenize card](https://github.com/paylike/sdk#popup-to-save-tokenize-a-card-for-later-use)
 ```js
 export default {
+    // ...
     methods: {
         popup() {
             this.$paylike.popup({
@@ -90,6 +89,7 @@ export default {
             });
         }
     }
+    // ...
 }
 ```
 
