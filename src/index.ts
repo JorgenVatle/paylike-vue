@@ -32,6 +32,11 @@ const PaylikeVue = {
         if (typeof Vue.loadScript === 'undefined') {
             LoadScript.install(Vue);
         }
+
+        Vue.loadScript('https://sdk.paylike.io/3.js')
+            .then(() => {
+                this.log('Loaded Paylike SDK.');
+            });
     },
 
     /**
@@ -41,6 +46,15 @@ const PaylikeVue = {
      */
     exception(message) {
         console.error(`[PaylikeVue] ${message}`);
+    },
+
+    /**
+     * Log a message to the console.
+     *
+     * @param message
+     */
+    log(message) {
+        console.info(`[PaylikeVue] ${message}`);
     }
 };
 
