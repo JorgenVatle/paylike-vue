@@ -11,7 +11,7 @@ npm install --save paylike-vue
 ```js
 import PaylikeVue from 'paylike-vue';
 
-Vue.use(PaylikeVue);
+Vue.use(PaylikeVue, { publicKey: 'your-paylike-public-key' });
 ```
 
 ## Usage
