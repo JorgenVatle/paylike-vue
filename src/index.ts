@@ -3,7 +3,7 @@ import LoadScript from 'vue-plugin-load-script';
 import { Vue as VueInstance } from "vue/types/vue";
 
 type options = { publicKey: string };
-interface Vue extends VueInstance { loadScript?: (src: string) => Promise<void> }
+interface Vue extends VueInstance { prototype: any, loadScript?: (src: string) => Promise<void> }
 
 let Vue: Vue;
 let Options: options;
@@ -36,6 +36,8 @@ const PaylikeVue = {
 
         Vue.loadScript('https://sdk.paylike.io/3.js')
             .then(() => {
+                Vue.prototype.$paylike = Paylike(Options.publicKey);
+
                 this.log('Loaded Paylike SDK.');
             });
     },
