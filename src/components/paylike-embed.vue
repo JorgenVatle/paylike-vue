@@ -14,6 +14,8 @@
              * Handle Paylike form submit.
              */
             submit() {
+                this.cleanForm();
+
                 if (!this.payment) {
                     return this.tokenizeCard();
                 }
@@ -48,6 +50,15 @@
                 }
 
                 this.$emit('success', resp);
+            },
+
+            /**
+             * Remove name attributes from form.
+             */
+            cleanForm() {
+                this.$refs.form.querySelectorAll('input').forEach((input) => {
+                    input.removeAttribute('name');
+                });
             }
         }
     }
