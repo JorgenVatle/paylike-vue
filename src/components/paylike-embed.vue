@@ -5,6 +5,14 @@
 </template>
 
 <script>
+    const fieldClasses = [
+        'card-code',
+        'card-number',
+        'card-expiry',
+        'card-expiry-month',
+        'card-expiry-year'
+    ];
+
     export default {
         name: 'paylike-embed',
         props: ['payment'],
@@ -14,7 +22,7 @@
              * Handle Paylike form submit.
              */
             submit() {
-                this.cleanForm();
+                this.prepareForm();
 
                 if (!this.payment) {
                     return this.tokenizeCard();
@@ -53,13 +61,25 @@
             },
 
             /**
+             * Prepare an input for Paylike payment.
+             *
+             * @param {HTMLInputElement} input
+             */
+            prepareInput(input) {
+                input.removeAttribute('name');
+                fieldClasses.forEach((fieldClass) => {
+                    if (input.getAttribute('paylike-input').toLowerCase() === fieldClass) {
+                        input.classList.add(fieldClass);
+                    }
+                });
+            },
+
+            /**
              * Remove name attributes from form.
              */
-            cleanForm() {
-                this.$refs.form.querySelectorAll('input').forEach((input) => {
-                    input.removeAttribute('name');
-                });
-            }
+            prepareForm() {
+                this.$refs.form.querySelectorAll('input').forEach(this.prepareInput);
+            },
         }
     }
 </script>
