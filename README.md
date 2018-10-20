@@ -23,10 +23,12 @@ Vue.use(PaylikeVue);
         methods: {
             popup() {
                 this.$paylike.popup({
-                    currency: 'USD',
-                    amount: 1337,                           // use minor units. (1337 is the same as $13.37)
                     title: 'Some Product',
                     description: 'Some descriptive text',
+
+                    amount: 1337,                           // use minor units. (1337 is the same as $13.37)
+                    currency: 'USD',
+                    
                     custom: {                               // optional
                         someCustomProperty: 'custom-value'
                     }
