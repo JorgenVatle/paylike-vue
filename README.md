@@ -52,7 +52,9 @@ Vue.use(PaylikeVue);
 </script>
 ```
 
-### [Popup](https://github.com/paylike/sdk#popup-for-a-transaction)
+### Popup
+
+#### [Create transaction](https://github.com/paylike/sdk#popup-for-a-transaction)
 ```vue
 <script>
     export default {
@@ -75,6 +77,20 @@ Vue.use(PaylikeVue);
         // ...
     }
 </script>
+```
+
+#### [Tokenize card](https://github.com/paylike/sdk#popup-to-save-tokenize-a-card-for-later-use)
+```js
+export default {
+    methods: {
+        popup() {
+            this.$paylike.popup({
+                title: 'Add card',
+                description: 'Please enter your card details',
+            });
+        }
+    }
+}
 ```
 
 ## License
