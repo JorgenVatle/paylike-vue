@@ -1,3 +1,4 @@
+// @ts-ignore
 import LoadScript from 'vue-plugin-load-script';
 import { Vue as VueInstance } from "vue/types/vue";
 
