@@ -6,11 +6,11 @@
 
 <script>
     const fieldClasses = [
-        'card-code',
-        'card-number',
-        'card-expiry',
-        'card-expiry-month',
-        'card-expiry-year'
+        'code',
+        'number',
+        'expiry',
+        'expiry-month',
+        'expiry-year'
     ];
 
     export default {
@@ -68,8 +68,8 @@
             prepareInput(input) {
                 input.removeAttribute('name');
                 fieldClasses.forEach((fieldClass) => {
-                    if (input.getAttribute('paylike-input').toLowerCase() === fieldClass) {
-                        input.classList.add(fieldClass);
+                    if (input.getAttribute('paylike-card').toLowerCase() === fieldClass) {
+                        input.classList.add(`card-${fieldClass}`);
                     }
                 });
             },
