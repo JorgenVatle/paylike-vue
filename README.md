@@ -14,6 +14,8 @@ Vue.use(PaylikeVue);
 ```
 
 ## Usage
+You can capture transactions and tokenize cards either through [embedding a form](#embed) in a Vue component, or by
+calling the [`popup()`](#popup) method on the Vue Paylike prototype exposed by this package.
 
 ### Embed
 
