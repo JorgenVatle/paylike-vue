@@ -14,6 +14,10 @@
              * Handle Paylike form submit.
              */
             submit() {
+                if (!this.payment) {
+                    return this.tokenizeCard();
+                }
+
                 this.createTransaction();
             },
 
