@@ -93,8 +93,8 @@ export default {
     methods: {
         popup() {
             this.$paylike.popup({
-                title: 'Some Product',
-                description: 'Some descriptive text',
+                title: 'Some Product',                  // optional
+                description: 'Some descriptive text',   // optional
 
                 amount: 1337,                           // use minor units. (1337 is the same as $13.37)
                 currency: 'USD',
