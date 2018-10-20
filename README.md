@@ -70,8 +70,8 @@ Vue.use(PaylikeVue);
 <script>
     export default {
         methods: {
-            success({ transaction }) {
-                console.log(transaction);   // { id: ... }
+            success({ card }) {
+                console.log(card);   // { id: ... }
             },
             
             error(paylikeError) {
