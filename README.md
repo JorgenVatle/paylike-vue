@@ -1,6 +1,6 @@
 # Paylike Vue
 A Vue wrapper for the [Paylike SDK](https://github.com/paylike/sdk). Makes importing and interacting with the Paylike
-SDK more seamless and Vue-like,  
+SDK more seamless and Vue-like.
 
 ## Installation
 ```bash
