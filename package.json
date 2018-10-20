@@ -1,0 +1,24 @@
+{
+  "name": "paylike-vue",
+  "version": "1.0.0",
+  "description": "Vue wrapper for the Paylike client SDK",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JorgenVatle/paylike-vue.git"
+  },
+  "keywords": [
+    "Paylike SDK",
+    "Paylike",
+    "Vue"
+  ],
+  "author": "Jørgen Vatle <Jorgen@WcAServices.net> (https://github.com/JorgenVatle)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JorgenVatle/paylike-vue/issues"
+  },
+  "homepage": "https://github.com/JorgenVatle/paylike-vue#readme"
+}
