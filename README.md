@@ -15,7 +15,8 @@ Vue.use(PaylikeVue);
 
 ## Usage
 
-### [Embed](https://github.com/paylike/sdk#embedded-form-for-transactions)
+### Embed
+#### [Create a transaction using embed](https://github.com/paylike/sdk#embedded-form-for-transactions)
 ```vue
 <template>
     <paylike-embed :payment="payment" @success="success" @error="error">
@@ -54,7 +55,7 @@ Vue.use(PaylikeVue);
 
 ### Popup
 
-#### [Create transaction](https://github.com/paylike/sdk#popup-for-a-transaction)
+#### [Create transaction using popup](https://github.com/paylike/sdk#popup-for-a-transaction)
 ```js
 export default {
     // ...
@@ -85,7 +86,7 @@ export default {
 }
 ```
 
-#### [Tokenize card](https://github.com/paylike/sdk#popup-to-save-tokenize-a-card-for-later-use)
+#### [Tokenize card using popup](https://github.com/paylike/sdk#popup-to-save-tokenize-a-card-for-later-use)
 ```js
 export default {
     // ...
