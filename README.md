@@ -33,7 +33,7 @@ Vue.use(PaylikeVue);
         data() {
             return {
                 payment: {
-                    amount: 1337,       // use minor units. (1337 is the same as $13.37)
+                    amount: 1337,           // use minor units. (1337 is the same as $13.37)
                     currency: 'USD',
                 }
             }
@@ -41,7 +41,7 @@ Vue.use(PaylikeVue);
         
         methods: {
             success({ transaction }) {
-                console.log(transaction); // { id: ... }
+                console.log(transaction);   // { id: ... }
             },
             
             error(paylikeError) {
