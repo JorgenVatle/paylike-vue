@@ -89,16 +89,13 @@ calling the [`popup()`](#popup) method on the Vue Paylike prototype exposed by t
 #### [Create transaction using popup](https://github.com/paylike/sdk#popup-for-a-transaction)
 ```js
 export default {
-    // ...
     methods: {
         popup() {
             this.$paylike.popup({
                 title: 'Some Product',                  // optional
                 description: 'Some descriptive text',   // optional
-
                 amount: 1337,                           // use minor units. (1337 is the same as $13.37)
                 currency: 'USD',
-                
                 custom: {                               // optional
                     someCustomProperty: 'custom-value'
                 }
@@ -110,17 +107,15 @@ export default {
                 return console.error(error);
             }
             
-            console.log(response) // { transaction: { id: ... } }
+            console.log(response)                       // { transaction: { id: ... } }
         }
     }
-    // ...
 }
 ```
 
 #### [Tokenize card using popup](https://github.com/paylike/sdk#popup-to-save-tokenize-a-card-for-later-use)
 ```js
 export default {
-    // ...
     methods: {
         popup() {
             this.$paylike.popup({
@@ -137,7 +132,6 @@ export default {
             console.log(response) // { card: { id: ... } }
         }
     }
-    // ...
 }
 ```
 
