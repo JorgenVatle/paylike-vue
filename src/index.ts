@@ -44,7 +44,7 @@ const PaylikeVue = {
      *
      * @param message
      */
-    exception(message) {
+    exception(message: string) {
         return new Error(`[PaylikeVue] ${message}`);
     },
 
@@ -53,7 +53,7 @@ const PaylikeVue = {
      *
      * @param message
      */
-    log(message) {
+    log(message: string) {
         console.info(`[PaylikeVue] ${message}`);
     }
 };
