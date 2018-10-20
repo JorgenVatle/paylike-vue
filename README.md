@@ -16,6 +16,7 @@ Vue.use(PaylikeVue);
 ## Usage
 
 ### Embed
+
 #### [Create a transaction using embed](https://github.com/paylike/sdk#embedded-form-for-transactions)
 ```vue
 <template>
@@ -40,6 +41,34 @@ Vue.use(PaylikeVue);
             }
         },
         
+        methods: {
+            success({ transaction }) {
+                console.log(transaction);   // { id: ... }
+            },
+            
+            error(paylikeError) {
+                console.error(paylikeError);
+            },
+        }
+    }
+</script>
+```
+
+#### [Tokenize a card using embed](https://github.com/paylike/sdk#embedded-form-for-tokenization)
+```vue
+<template>
+    <paylike-embed @success="success" @error="error">
+        <!-- Do not add `name` properties on your input fields. -->
+        <input paylike-type="card-number" placeholder="4100 0000 000 000">
+        <input paylike-type="card-expiry" placeholder="MM/YY">
+        <input paylike-type="card-code" placeholder="123">
+        
+        <button type="submit">Save card</button>
+    </paylike-embed>
+</template>
+
+<script>
+    export default {
         methods: {
             success({ transaction }) {
                 console.log(transaction);   // { id: ... }
