@@ -70,7 +70,15 @@ export default {
                 custom: {                               // optional
                     someCustomProperty: 'custom-value'
                 }
-            })
+            }, this.popupCallback)
+        },
+        
+        popupCallback(error, response) {
+            if (error) {
+                return console.error(error);
+            }
+            
+            console.log(response) // { transaction: { id: ... } }
         }
     }
     // ...
@@ -86,7 +94,15 @@ export default {
             this.$paylike.popup({
                 title: 'Add card',
                 description: 'Please enter your card details',
-            });
+            }, this.popupCallback);
+        },
+        
+        popupCallback(error, response) {
+            if (error) {
+                return console.error(error);
+            }
+            
+            console.log(response) // { card: { id: ... } }
         }
     }
     // ...
