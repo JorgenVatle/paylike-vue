@@ -27,7 +27,7 @@ export default {
         Vue = vue;
         Options = options;
 
-        if (!options.publicKey) {
+        if (!options || !options.publicKey) {
             throw this.exception('No public key specified! Use: Vue.use(PaylikeVue, { publicKey: "your-public-key" })');
         }
 
