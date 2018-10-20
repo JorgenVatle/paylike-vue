@@ -2,8 +2,15 @@
 import LoadScript from 'vue-plugin-load-script';
 import { Vue as VueInstance } from "vue/types/vue";
 
+// @ts-ignore
+import PaylikeEmbed from './components/paylike-embed.vue';
+
 type options = { publicKey: string };
-interface Vue extends VueInstance { prototype: any, loadScript?: (src: string) => Promise<void> }
+interface Vue extends VueInstance {
+    prototype: any,
+    loadScript?: (src: string) => Promise<void>,
+    component: (name: string, component: any) => void;
+}
 
 let Vue: Vue;
 let Options: options;
@@ -25,6 +32,8 @@ export default {
         }
 
         this.loadDependencies();
+
+        Vue.component('PaylikeEmbed', PaylikeEmbed);
     },
 
     /**
