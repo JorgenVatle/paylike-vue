@@ -25,6 +25,13 @@
             },
 
             /**
+             * Tokenize a card for later use.
+             */
+            tokenizeCard() {
+                this.$paylike.tokenize(this.$refs.form, {}, this.callbackHandler);
+            },
+
+            /**
              * Handle a Paylike callback.
              *
              * @param err
