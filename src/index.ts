@@ -18,6 +18,10 @@ const PaylikeVue = {
         Vue = vue;
         Options = options;
 
+        if (!options.publicKey) {
+            this.exception('No public key specified! Use: Vue.use(PaylikeVue, { publicKey: "your-public-key" })');
+        }
+
         this.loadDependencies();
     },
 
@@ -28,6 +32,15 @@ const PaylikeVue = {
         if (typeof Vue.loadScript === 'undefined') {
             LoadScript.install(Vue);
         }
+    },
+
+    /**
+     * Log an error to the console.
+     *
+     * @param message
+     */
+    exception(message) {
+        console.error(`[PaylikeVue] ${message}`);
     }
 };
 
