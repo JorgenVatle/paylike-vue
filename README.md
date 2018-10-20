@@ -25,9 +25,9 @@ calling the [`popup()`](#popup) method on the Vue Paylike prototype exposed by t
 <template>
     <paylike-embed :payment="payment" @success="success" @error="error">
         <!-- Do not add `name` properties on your input fields. -->
-        <input paylike-card="number" placeholder="4100 0000 000 000">
-        <input paylike-card="expiry" placeholder="MM/YY">
-        <input paylike-card="code" placeholder="123">
+        <input paylike-card-number placeholder="4100 0000 000 000">
+        <input paylike-card-expiry placeholder="MM/YY">
+        <input paylike-card-code placeholder="123">
         
         <button type="submit">Pay</button>
     </paylike-embed>
@@ -62,9 +62,9 @@ calling the [`popup()`](#popup) method on the Vue Paylike prototype exposed by t
 <template>
     <paylike-embed @success="success" @error="error">
         <!-- Do not add `name` properties on your input fields. -->
-        <input paylike-card="number" placeholder="4100 0000 000 000">
-        <input paylike-card="expiry" placeholder="MM/YY">
-        <input paylike-card="code" placeholder="123">
+        <input paylike-card-number placeholder="4100 0000 000 000">
+        <input paylike-card-expiry placeholder="MM/YY">
+        <input paylike-card-code placeholder="123">
         
         <button type="submit">Save card</button>
     </paylike-embed>
