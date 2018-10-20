@@ -23,4 +23,6 @@ export interface PaylikeInstance {
     popup(config: PaymentOptions, callback: PopupCallback): void
 }
 
-declare function Paylike(apiKey: string): PaylikeInstance;
+declare global {
+    function Paylike(apiKey: string): PaylikeInstance;
+}
