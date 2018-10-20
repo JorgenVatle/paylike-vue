@@ -19,7 +19,7 @@ const PaylikeVue = {
         Options = options;
 
         if (!options.publicKey) {
-            this.exception('No public key specified! Use: Vue.use(PaylikeVue, { publicKey: "your-public-key" })');
+            throw this.exception('No public key specified! Use: Vue.use(PaylikeVue, { publicKey: "your-public-key" })');
         }
 
         this.loadDependencies();
@@ -45,7 +45,7 @@ const PaylikeVue = {
      * @param message
      */
     exception(message) {
-        console.error(`[PaylikeVue] ${message}`);
+        return new Error(`[PaylikeVue] ${message}`);
     },
 
     /**
