@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm run build:umd & npm run build:es & npm run build:unpkg",
+    "build": "npm run build:umd && npm run build:es && npm run build:unpkg",
     "build:umd": "rollup --config build/rollup.config.js --format umd --file dist/paylike-vue.umd.js",
     "build:es": "rollup --config build/rollup.config.js --format es --file dist/paylike-vue.esm.js",
     "build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/paylike-vue.min.js"
