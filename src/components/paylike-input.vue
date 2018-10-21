@@ -5,10 +5,12 @@
 </template>
 
 <script>
+    import Utils from '../utils';
+
     export default {
         name: 'paylike-input',
         inheritAttrs: false,
-        props: ['value'],
+        props: ['value', ...Utils.cardInputAttributes],
 
         computed: {
             listeners() {
