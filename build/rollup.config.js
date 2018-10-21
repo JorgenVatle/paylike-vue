@@ -17,7 +17,7 @@ export default {
     ],
     plugins: [
         Typescript(),
-        Vue({ compileTemplate: true }),
+        Vue({ compileTemplate: true, css: true }),
         Buble(),
     ],
 };
