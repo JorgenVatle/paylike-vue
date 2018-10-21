@@ -65,9 +65,10 @@
              */
             prepareInput(input) {
                 input.removeAttribute('name');
-                fieldClasses.forEach((fieldClass) => {
-                    if (input.getAttribute(`paylike-card-${fieldClass}`) !== null) {
-                        input.classList.add(`card-${fieldClass}`);
+
+                Utils.cardInputAttributes.forEach((attribute) => {
+                    if (input.getAttribute(attribute) !== null) {
+                        input.classList.add(Utils.getInputClass(attribute));
                     }
                 });
             },
