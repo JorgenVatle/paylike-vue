@@ -1,5 +1,9 @@
 <template>
-    <div class="paylike-card-icon" v-html=""></div>
+    <div class="paylike-card-icon">
+        <visa-card v-if="isCard('visa')" />
+        <master-card v-else-if="isCard('mastercard')" />
+        <blank-card v-else />
+    </div>
 </template>
 
 <script>
@@ -8,35 +12,33 @@
     import VisaCard from '../assets/card-visa.svg';
 
     const availableCards = [
-        {
-            name: 'visa',
-            svg: VisaCard,
-        },
-        {
-            name: 'mastercard',
-            svg: MasterCard,
-        },
-        {
-            name: 'blank',
-            svg: BlankCard,
-        }
+        'visa',
+        'mastercard',
+        'blank',
     ];
 
     export default {
         name: 'card-svg',
+        components: { BlankCard, MasterCard, VisaCard },
         props: {
             card: {
                 default: 'blank',
                 validator(card) {
-                    return !!availableCards.find((available) => available.name === card);
+                    return availableCards.indexOf(card) !== -1;
                 }
             },
         },
 
-        getHtml(cardName) {
-            return availableCards.find((card) => {
-                return card.name === cardName;
-            }).svg;
+        methods: {
+            /**
+             * Check if the given card is to be displayed.
+             *
+             * @param card
+             * @returns {boolean}
+             */
+            isCard(card) {
+                return this.card === card;
+            }
         }
     }
 </script>
