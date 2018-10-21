@@ -10,12 +10,7 @@
     import BlankCard from '../assets/card-blank.svg';
     import MasterCard from '../assets/card-mastercard.svg';
     import VisaCard from '../assets/card-visa.svg';
-
-    const availableCards = [
-        'visa',
-        'mastercard',
-        'blank',
-    ];
+    import Utils from '../utils';
 
     export default {
         name: 'card-svg',
@@ -24,7 +19,7 @@
             card: {
                 default: 'blank',
                 validator(card) {
-                    return availableCards.indexOf(card) !== -1;
+                    return Utils.cards.indexOf(card) !== -1;
                 }
             },
         },
