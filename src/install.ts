@@ -4,6 +4,8 @@ import { Vue as VueInstance } from "vue/types/vue";
 
 // @ts-ignore
 import PaylikeEmbed from './components/paylike-embed.vue';
+// @ts-ignore
+import PaylikeInput from './components/paylike-input.vue';
 
 type options = { publicKey: string };
 interface Vue extends VueInstance {
@@ -34,6 +36,7 @@ export default {
         this.loadDependencies();
 
         Vue.component('PaylikeEmbed', PaylikeEmbed);
+        Vue.component('PaylikeInput', PaylikeInput);
     },
 
     /**

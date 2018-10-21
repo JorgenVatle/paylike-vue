@@ -1,6 +1,8 @@
 import Vue from 'rollup-plugin-vue';
 import Buble from 'rollup-plugin-buble';
+import SVG from 'rollup-plugin-vue-inline-svg';
 import Typescript from 'rollup-plugin-typescript';
+import Babel from 'rollup-plugin-babel';
 
 const output = {
     name: 'PaylikeVue',
@@ -17,7 +19,9 @@ export default {
     ],
     plugins: [
         Typescript(),
-        Vue({ compileTemplate: true }),
+        Babel(),
+        SVG(),
+        Vue({ compileTemplate: true, css: true }),
         Buble(),
     ],
 };

@@ -5,13 +5,11 @@
 </template>
 
 <script>
-    const fieldClasses = [
-        'code',
-        'number',
-        'expiry',
-        'expiry-month',
-        'expiry-year'
-    ];
+    import Utils from '../utils';
+
+    const fieldClasses = Utils.cardInputAttributes.map((attribute) => {
+        return attribute.replace('paylike-card', '');
+    });
 
     export default {
         name: 'paylike-embed',
@@ -67,9 +65,10 @@
              */
             prepareInput(input) {
                 input.removeAttribute('name');
-                fieldClasses.forEach((fieldClass) => {
-                    if (input.getAttribute(`paylike-card-${fieldClass}`) !== null) {
-                        input.classList.add(`card-${fieldClass}`);
+
+                Utils.cardInputAttributes.forEach((attribute) => {
+                    if (input.getAttribute(attribute) !== null) {
+                        input.classList.add(Utils.getInputClass(attribute));
                     }
                 });
             },
