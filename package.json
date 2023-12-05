@@ -2,9 +2,14 @@
   "name": "paylike-vue",
   "version": "2.0.1",
   "description": "Vue wrapper for the Paylike client SDK",
-  "main": "dist/paylike-vue.umd.js",
-  "unpkg": "dist/paylike-vue.umd.js",
-  "module": "dist/paylike-vue.esm.js",
+  "main": "dist/index.js",
+  "unpkg": "dist/index.umd.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
   "files": [
     "dist"
   ],
