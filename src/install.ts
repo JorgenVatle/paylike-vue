@@ -18,9 +18,14 @@ export default {
     install(vue: Vue, options: options) {
         Vue = vue;
         Options = options;
+        Vue.component('PaylikeEmbed', PaylikeEmbed);
         
         if (!options || !options.publicKey) {
             throw this.exception('No public key specified! Use: Vue.use(PaylikeVue, { publicKey: "your-public-key" })');
+        }
+        
+        if (options.loadSdkImmediately === false) {
+            return;
         }
         
         this.loadDependencies().then(() => {
@@ -28,8 +33,6 @@ export default {
         }).catch((error) => {
             console.error('Failed to load Paylike SDK!', error);
         });
-        
-        Vue.component('PaylikeEmbed', PaylikeEmbed);
     },
     
     /**
@@ -70,7 +73,10 @@ export default {
     },
 };
 
-type options = { publicKey: string };
+type options = {
+    publicKey: string
+    loadSdkImmediately?: boolean;
+};
 
 interface Vue extends VueInstance {
     prototype: any,
