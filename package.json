@@ -17,7 +17,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "vite build && tsc",
-    "preversion": "git pull && npm run build",
+    "prepack": "npm run build",
     "postpublish": "git push && git push --tags"
   },
   "repository": {
