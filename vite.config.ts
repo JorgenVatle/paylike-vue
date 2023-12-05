@@ -9,6 +9,7 @@ export default defineConfig({
         lib: {
             entry: ['src/index.ts'],
             fileName: 'index',
+            formats: ['cjs', 'umd', 'es'],
             name: 'PaylikeVue'
         },
         outDir: 'dist',
