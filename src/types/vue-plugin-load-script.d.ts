@@ -1,10 +1,10 @@
 import Vue from 'vue';
 
 declare module 'vue-plugin-load-script' {
-    function install(vue: Vue): void;
+    function install(vue: typeof Vue): void;
 }
 declare module 'vue/types/vue' {
-    interface Vue {
+    interface VueConstructor {
         loadScript(src: string): Promise<void>;
     }
 }
