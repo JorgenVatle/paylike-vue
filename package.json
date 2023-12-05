@@ -1,6 +1,6 @@
 {
   "name": "paylike-vue",
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "Vue wrapper for the Paylike client SDK",
   "main": "dist/index.js",
   "unpkg": "dist/index.umd.js",
