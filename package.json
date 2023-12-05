@@ -18,7 +18,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "vite build && tsc",
     "preversion": "git pull && npm run build",
-    "postversion": "git push && git push --tags"
+    "postpublish": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
