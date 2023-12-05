@@ -8,7 +8,7 @@ export interface Config {
 
 export class PaylikeVue {
     protected loaded = false;
-    protected client?: PaylikeInstance;
+    protected sdk?: PaylikeInstance;
     
     constructor(
         protected readonly vue: typeof Vue,
@@ -33,12 +33,12 @@ export class PaylikeVue {
         
         await this.vue.loadScript!('https://sdk.paylike.io/3.js');
         this.log('Loaded Paylike SDK.');
-        this.client = window.Paylike(this.config.publicKey);
+        this.sdk = window.Paylike(this.config.publicKey);
         this.loaded = true;
     }
     
     public popup(options: PopupOptions, callback: (error: Error, response: unknown) => void) {
-        return this.client!.popup(options, callback);
+        return this.sdk!.popup(options, callback);
     }
     
     protected log(message: string) {
