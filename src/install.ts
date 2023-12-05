@@ -19,6 +19,9 @@ export default {
         Vue = vue;
         Options = options;
         Vue.component('PaylikeEmbed', PaylikeEmbed);
+        Vue.prototype.$paylikeVue = {
+            load: () => loadSdk();
+        }
         
         if (!options || !options.publicKey) {
             throw this.exception('No public key specified! Use: Vue.use(PaylikeVue, { publicKey: "your-public-key" })');
@@ -28,30 +31,11 @@ export default {
             return;
         }
         
-        this.loadDependencies().then(() => {
+        Vue.$paylikeVue.load().then(() => {
             this.log('Loaded Paylike SDK.');
         }).catch((error) => {
             console.error('Failed to load Paylike SDK!', error);
         });
-    },
-    
-    /**
-     * Load Vue plugin dependencies.
-     */
-    async loadDependencies() {
-        if (typeof window === 'undefined') {
-            return;
-        }
-        if (loaded) {
-            return this.log('SDK has already been loaded!');
-        }
-        if (typeof Vue.loadScript === 'undefined') {
-            LoadScript.install(Vue);
-        }
-        
-        await Vue.loadScript!('https://sdk.paylike.io/3.js');
-        window.Paylike(Options.publicKey);
-        loaded = true;
     },
     
     /**
@@ -73,6 +57,22 @@ export default {
     },
 };
 
+async function loadSdk() {
+    if (typeof window === 'undefined') {
+        return;
+    }
+    if (loaded) {
+        throw new Error('Paylike SDK has already been loaded!');
+    }
+    if (typeof Vue.loadScript === 'undefined') {
+        LoadScript.install(Vue);
+    }
+    
+    await Vue.loadScript!('https://sdk.paylike.io/3.js');
+    window.Paylike(Options.publicKey);
+    loaded = true;
+}
+
 type options = {
     publicKey: string
     loadSdkImmediately?: boolean;
@@ -86,4 +86,12 @@ interface Vue extends VueInstance {
 
 declare module 'vue-plugin-load-script' {
     function install(vue: Vue): void;
+}
+
+declare module 'vue/types/vue' {
+    interface Vue {
+        $paylikeVue: {
+            load(): Promise<void>;
+        }
+    }
 }
