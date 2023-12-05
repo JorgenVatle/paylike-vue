@@ -5,6 +5,7 @@
   "main": "dist/paylike-vue.umd.js",
   "unpkg": "dist/paylike-vue.umd.js",
   "module": "dist/paylike-vue.esm.js",
+  "files": ["dist"],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup --config build/rollup.config.js",
