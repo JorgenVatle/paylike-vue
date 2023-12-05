@@ -48,6 +48,7 @@ export default {
         
         await Vue.loadScript!('https://sdk.paylike.io/3.js');
         window.Paylike(Options.publicKey);
+        loaded = true;
     },
     
     /**
