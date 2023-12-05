@@ -40,13 +40,16 @@ export default {
      * Load Vue plugin dependencies.
      */
     loadDependencies() {
+        if (typeof window === 'undefined') {
+            return;
+        }
         if (typeof Vue.loadScript === 'undefined') {
             LoadScript.install(Vue);
         }
 
         Vue.loadScript('https://sdk.paylike.io/3.js')
             .then(() => {
-                Vue.prototype.$paylike = Paylike(Options.publicKey);
+                window.Paylike(Options.publicKey);
 
                 this.log('Loaded Paylike SDK.');
             }).catch((error) => {
