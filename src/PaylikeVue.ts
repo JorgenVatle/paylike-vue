@@ -8,7 +8,7 @@ export interface Config {
 
 export class PaylikeVue {
     protected loaded = false;
-    protected sdk?: PaylikeInstance;
+    public sdk?: PaylikeInstance;
     
     constructor(
         protected readonly vue: typeof Vue,
