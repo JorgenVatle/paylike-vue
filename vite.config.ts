@@ -6,6 +6,7 @@ export default defineConfig({
       Vue(),
     ],
     build: {
+        sourcemap: true,
         lib: {
             entry: ['src/index.ts'],
             fileName: 'index',
