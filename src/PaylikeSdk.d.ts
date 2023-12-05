@@ -25,4 +25,7 @@ export interface PaylikeInstance {
 
 declare global {
     function Paylike(apiKey: string): PaylikeInstance;
+    interface window {
+        Paylike: typeof Paylike
+    }
 }
