@@ -34,15 +34,8 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue2": "^2.3.1",
-    "rollup": "^0.66.6",
-    "rollup-plugin-buble": "^0.19.4",
-    "rollup-plugin-typescript": "^1.0.0",
-    "rollup-plugin-vue": "^4.3.2",
-    "tslib": "^1.9.3",
     "typescript": "^5.3.2",
-    "vite": "^5.0.5",
-    "vue-template-compiler": "^2.5.17",
-    "vuetype": "^0.3.2"
+    "vite": "^5.0.5"
   },
   "dependencies": {
     "vue-plugin-load-script": "^1.1.0"
