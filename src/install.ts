@@ -19,59 +19,48 @@ export default {
         Vue = vue;
         Options = options;
         Vue.component('PaylikeEmbed', PaylikeEmbed);
-        Vue.prototype.$paylikeVue = {
-            load: () => loadSdk(),
-        }
-        
-        if (!options || !options.publicKey) {
-            throw this.exception('No public key specified! Use: Vue.use(PaylikeVue, { publicKey: "your-public-key" })');
-        }
+        Vue.prototype.$paylikeVue = new PaylikeVue(options);
         
         if (options.loadSdkImmediately === false) {
             return;
         }
         
-        Vue.$paylikeVue.load().then(() => {
-            this.log('Loaded Paylike SDK.');
-        }).catch((error) => {
+        Vue.$paylikeVue.loadSdk().catch((error) => {
             console.error('Failed to load Paylike SDK!', error);
         });
     },
     
-    /**
-     * Log an error to the console.
-     *
-     * @param message
-     */
-    exception(message: string) {
-        return new Error(`[PaylikeVue] ${message}`);
-    },
-    
-    /**
-     * Log a message to the console.
-     *
-     * @param message
-     */
-    log(message: string) {
-        console.info(`[PaylikeVue] ${message}`);
-    },
 };
 
-async function loadSdk() {
-    if (typeof window === 'undefined') {
-        return;
-    }
-    if (loaded) {
-        throw new Error('Paylike SDK has already been loaded!');
-    }
-    if (typeof Vue.loadScript === 'undefined') {
-        LoadScript.install(Vue);
+class PaylikeVue {
+    constructor(protected readonly config: { publicKey: string }) {}
+    
+    public async loadSdk() {
+        if (typeof window === 'undefined') {
+            return;
+        }
+        if (loaded) {
+            throw new PaylikeVueError('Paylike SDK has already been loaded!');
+        }
+        if (!this.config.publicKey) {
+            throw new PaylikeVueError('No public key specified! Use: Vue.use(PaylikeVue, { publicKey: "your-public-key" })')
+        }
+        if (typeof Vue.loadScript === 'undefined') {
+            LoadScript.install(Vue);
+        }
+        
+        await Vue.loadScript!('https://sdk.paylike.io/3.js');
+        this.log('Loaded Paylike SDK.');
+        window.Paylike(Options.publicKey);
+        loaded = true;
     }
     
-    await Vue.loadScript!('https://sdk.paylike.io/3.js');
-    window.Paylike(Options.publicKey);
-    loaded = true;
+    protected log(message: string) {
+        console.info(`[PaylikeVue] ${message}`);
+    }
 }
+
+class PaylikeVueError extends Error {}
 
 type options = {
     publicKey: string
@@ -90,8 +79,6 @@ declare module 'vue-plugin-load-script' {
 
 declare module 'vue/types/vue' {
     interface Vue {
-        $paylikeVue: {
-            load(): Promise<void>;
-        }
+        $paylikeVue: PaylikeVue;
     }
 }
