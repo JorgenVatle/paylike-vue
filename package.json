@@ -27,6 +27,9 @@
     "url": "https://github.com/JorgenVatle/paylike-vue/issues"
   },
   "homepage": "https://github.com/JorgenVatle/paylike-vue#readme",
+  "peerDependencies": {
+    "vue": ">=2.x"
+  },
   "devDependencies": {
     "rollup": "^0.66.6",
     "rollup-plugin-buble": "^0.19.4",
@@ -38,7 +41,6 @@
     "vuetype": "^0.3.2"
   },
   "dependencies": {
-    "vue": "^2.5.17",
     "vue-plugin-load-script": "^1.1.0"
   }
 }
