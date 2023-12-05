@@ -2,7 +2,6 @@
 import LoadScript from 'vue-plugin-load-script';
 import { Vue as VueInstance } from "vue/types/vue";
 
-// @ts-ignore
 import PaylikeEmbed from './components/paylike-embed.vue';
 
 type options = { publicKey: string };
