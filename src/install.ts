@@ -1,4 +1,3 @@
-// @ts-ignore
 import LoadScript from 'vue-plugin-load-script';
 import { Vue as VueInstance } from "vue/types/vue";
 
@@ -9,6 +8,10 @@ interface Vue extends VueInstance {
     prototype: any,
     loadScript?: (src: string) => Promise<void>,
     component: (name: string, component: any) => void;
+}
+
+declare module 'vue-plugin-load-script' {
+    function install(vue: Vue): void;
 }
 
 let Vue: Vue;
