@@ -5,6 +5,7 @@ import PaylikeEmbed from './components/paylike-embed.vue';
 
 let Vue: Vue;
 let Options: options;
+let loaded = false;
 
 export default {
     
@@ -37,6 +38,9 @@ export default {
     async loadDependencies() {
         if (typeof window === 'undefined') {
             return;
+        }
+        if (loaded) {
+            return this.log('SDK has already been loaded!');
         }
         if (typeof Vue.loadScript === 'undefined') {
             LoadScript.install(Vue);
