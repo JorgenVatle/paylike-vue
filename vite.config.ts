@@ -8,6 +8,8 @@ export default defineConfig({
     build: {
         lib: {
             entry: ['src/index.ts'],
+            fileName: 'index',
+            name: 'PaylikeVue'
         },
         outDir: 'dist',
         rollupOptions: {
