@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import LoadScript from 'vue-plugin-load-script';
+import { PaylikeInstance, PopupOptions } from './types/PaylikeSdk';
 
 export interface Config {
     publicKey: string;
@@ -7,6 +8,7 @@ export interface Config {
 
 export class PaylikeVue {
     protected loaded = false;
+    protected client?: PaylikeInstance;
     
     constructor(
         protected readonly vue: Vue,
@@ -31,8 +33,12 @@ export class PaylikeVue {
         
         await this.vue.loadScript!('https://sdk.paylike.io/3.js');
         this.log('Loaded Paylike SDK.');
-        window.Paylike(this.config.publicKey);
+        this.client = window.Paylike(this.config.publicKey);
         this.loaded = true;
+    }
+    
+    public popup(options: PopupOptions, callback: (error: Error, response: unknown) => void) {
+        return this.client!.popup(options, callback);
     }
     
     protected log(message: string) {
