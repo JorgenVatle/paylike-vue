@@ -11,7 +11,7 @@ export class PaylikeVue {
     protected client?: PaylikeInstance;
     
     constructor(
-        protected readonly vue: Vue,
+        protected readonly vue: typeof Vue,
         protected readonly config: Config
     ) {
     }

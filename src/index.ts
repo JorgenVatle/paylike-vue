@@ -10,20 +10,21 @@ export default {
      * @param vue
      * @param options
      */
-    install(vue: Vue, options: Config & { loadSdkImmediately?: boolean }) {
-        Vue.component('PaylikeEmbed', PaylikeEmbed);
-        Vue.prototype.$paylike = new PaylikeVue(vue, options);
+    install(vue: typeof Vue, options: Config & { loadSdkImmediately?: boolean }) {
+        vue.component('PaylikeEmbed', PaylikeEmbed);
+        vue.prototype.$paylike = new PaylikeVue(vue, options);
         
         if (options.loadSdkImmediately === false) {
             return;
         }
         
-        vue.$paylike.loadSdk().catch((error) => {
+        vue.prototype.$paylike.loadSdk().catch((error: unknown) => {
             console.error('Failed to load Paylike SDK!', error);
         });
     },
     
 };
+
 
 declare module 'vue/types/vue' {
     interface Vue {
