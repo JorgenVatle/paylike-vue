@@ -20,7 +20,7 @@ export default {
         Options = options;
         Vue.component('PaylikeEmbed', PaylikeEmbed);
         Vue.prototype.$paylikeVue = {
-            load: () => loadSdk();
+            load: () => loadSdk(),
         }
         
         if (!options || !options.publicKey) {
