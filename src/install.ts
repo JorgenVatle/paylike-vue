@@ -42,7 +42,7 @@ export default {
             LoadScript.install(Vue);
         }
         
-        await Vue.loadScript('https://sdk.paylike.io/3.js');
+        await Vue.loadScript!('https://sdk.paylike.io/3.js');
         window.Paylike(Options.publicKey);
     },
     
