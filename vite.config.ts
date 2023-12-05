@@ -1,9 +1,11 @@
 import Vue from '@vitejs/plugin-vue2';
+import TypeScript from 'rollup-plugin-typescript2';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
     plugins: [
       Vue(),
+      TypeScript(),
     ],
     build: {
         lib: {
