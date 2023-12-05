@@ -30,7 +30,11 @@ export default {
             throw this.exception('No public key specified! Use: Vue.use(PaylikeVue, { publicKey: "your-public-key" })');
         }
 
-        this.loadDependencies();
+        this.loadDependencies().then(() => {
+            this.log('Loaded Paylike SDK.');
+        }).catch((error) => {
+            console.error('Failed to load Paylike SDK!', error);
+        });
 
         Vue.component('PaylikeEmbed', PaylikeEmbed);
     },
@@ -38,7 +42,7 @@ export default {
     /**
      * Load Vue plugin dependencies.
      */
-    loadDependencies() {
+    async loadDependencies() {
         if (typeof window === 'undefined') {
             return;
         }
@@ -46,14 +50,8 @@ export default {
             LoadScript.install(Vue);
         }
 
-        Vue.loadScript('https://sdk.paylike.io/3.js')
-            .then(() => {
-                window.Paylike(Options.publicKey);
-
-                this.log('Loaded Paylike SDK.');
-            }).catch((error) => {
-                console.error('Failed to load Paylike SDK!', error);
-        });
+        await Vue.loadScript('https://sdk.paylike.io/3.js');
+        window.Paylike(Options.publicKey);
     },
 
     /**
