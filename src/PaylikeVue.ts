@@ -21,7 +21,8 @@ export class PaylikeVue {
             return;
         }
         if (this.loaded) {
-            throw new PaylikeVueError('Paylike SDK has already been loaded!');
+            console.warn(new PaylikeVueError('Paylike SDK has already been loaded!'));
+            return;
         }
         if (!this.config.publicKey) {
             throw new PaylikeVueError(
