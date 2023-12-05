@@ -49,7 +49,9 @@ export default {
                 Vue.prototype.$paylike = Paylike(Options.publicKey);
 
                 this.log('Loaded Paylike SDK.');
-            });
+            }).catch((error) => {
+                console.error('Failed to load Paylike SDK!', error);
+        });
     },
 
     /**
